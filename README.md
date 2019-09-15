@@ -6,11 +6,11 @@ communication with ABB 6700, trajectory generator, online trajectory compensator
 ## data_processor
 processing 3D point cloud data from sensor
 
-## com_BeltGrinder
+## com_beltgrinder
 communication with BeltGrinder over Twincat ADS protocol
 
-## com_micro-epsilon_sensor
+## com_sensor
 communication with micro-epsilon sensor over Modbus/TCP protocol
 
-## com_PLC
+## com_plc
 communication with siemens PLC over OPC-UA protocol
