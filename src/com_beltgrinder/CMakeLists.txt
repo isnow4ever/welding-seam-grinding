@@ -13,6 +13,7 @@ catkin_package(
 )
 
 include_directories (
+  include ${catkin_INCLUDE_DIRS}
   include 
   ${catkin_INCLUDE_DIRS}
   ${com_beltgrinder_INCLUDE_DIRS}
@@ -34,7 +35,7 @@ set(CMAKE_AUTOUIC ON)
 
 # Find the QtWidgets library
 
-set(CMAKE_PREFIX_PATH /opt/Qt/5.4/gcc_64)
+set(CMAKE_PREFIX_PATH /home/proj/Qt5.8.0/5.8/gcc_64)
 find_package(Qt5Widgets REQUIRED)
 
 add_library(AdsLib STATIC 
@@ -48,5 +49,7 @@ add_library(AdsLib STATIC
   include/AdsLib/Sockets.cpp
   include/AdsLib/Frame.cpp)
 
-add_executable  (com_beltgrinder src/main.cpp)
-target_link_libraries (com_beltgrinder AdsLib Qt5::Widgets)
+add_executable  (com_beltgrinder src/main.cpp src/com_beltgrinder.cpp)
+
+add_dependencies(com_beltgrinder ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries (com_beltgrinder AdsLib Qt5::Widgets pthread ${catkin_LIBRARIES})
